@@ -1,0 +1,6 @@
+.env
+__pycache__/
+venv_character_ai/
+*.db
+*.sqlite3
+chroma_db/
