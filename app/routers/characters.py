@@ -68,6 +68,23 @@ async def create_character(request : Request,character : CharacterCreateRequest,
         db.close()
 
 
+@router.get("/user/characters")
+def get_user_characters(current_user: User = Depends(get_current_user)):
+    db = SessionLocal()
+    try:
+        characters = db.query(Character).filter(Character.creator_id == current_user.id).all()
+        char_list = []
+        for char in characters:
+            char_list.append({
+                "id": char.id,
+                "name": char.name,
+                "prompt_data": char.prompt_data
+            })
+        return {"username": current_user.username, "characters": char_list}
+    finally:
+        db.close()
+
+
 @router.delete("/character/delete-character/{char_id}")
 async def delete_character(char_id: str, current_user: User = Depends(get_current_user)):
     db = SessionLocal() # Ensure this matches your import spelling

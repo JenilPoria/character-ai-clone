@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mythos AI - User Profile</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6366f1", "secondary": "#a855f7",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#050505", "card-dark": "#0a0a0a", "input-dark": "#121212",
+                        "text-muted": "#94a3b8",
+                        "accent-blue": "#3b82f6",
+                        "accent-purple": "#8b5cf6",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'neon': '0 0 10px rgba(99, 102, 241, 0.3), 0 0 20px rgba(139, 92, 246, 0.1)',
+                        'neon-hover': '0 0 15px rgba(99, 102, 241, 0.5), 0 0 30px rgba(139, 92, 246, 0.2)',
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .neon-border {
+            position: relative;
+        }
+
+        .neon-border::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.5), rgba(139, 92, 246, 0.5));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        body {
+            height: 100dvh;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-display antialiased text-slate-100 min-h-screen flex flex-col">
+    <header class="sticky top-0 z-30 bg-background-dark/95 backdrop-blur-md border-b border-white/10">
+        <div class="flex items-center justify-between px-4 py-3">
+            <div class="flex items-center gap-3">
+                <button onclick="window.history.back()"
+                    class="flex h-10 w-10 items-center justify-center rounded-full hover:bg-white/10 text-slate-300 transition-colors">
+                    <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                </button>
+                <h1
+                    class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-white">
+                    Profile
+                </h1>
+            </div>
+            <button onclick="logout()"
+                class="flex items-center gap-1 text-sm font-semibold text-red-400 hover:text-red-300 transition-colors shadow-neon rounded-full px-3 py-1 bg-red-500/10 border border-red-500/20">
+                <span class="material-symbols-outlined text-[18px]">logout</span>
+                <span>Sign Out</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-4 py-6 bg-background-dark">
+        <!-- User Header Section -->
+        <section class="flex flex-col items-center justify-center py-6 mb-8 border-b border-white/5">
+            <div class="relative mb-4">
+                <div id="avatar-initial"
+                    class="w-24 h-24 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-4xl font-bold shadow-neon ring-4 ring-background-dark">
+                    ?
+                </div>
+                <!-- Guest specific badge if needed -->
+            </div>
+            <h2 id="username-display" class="text-3xl font-extrabold text-white mb-1">Loading...</h2>
+            <p class="text-sm font-medium text-slate-400">Mythos Creator</p>
+
+            <div class="flex gap-4 mt-6">
+                <div class="flex flex-col items-center bg-card-dark px-6 py-3 rounded-2xl border border-white/5">
+                    <span id="char-count" class="text-2xl font-bold text-indigo-400">0</span>
+                    <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Characters</span>
+                </div>
+                <div class="flex flex-col items-center bg-card-dark px-6 py-3 rounded-2xl border border-white/5">
+                    <span class="text-2xl font-bold text-purple-400">12</span>
+                    <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Chats</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Created Characters Grid -->
+        <section class="mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                    <span class="material-symbols-outlined text-purple-400">auto_awesome</span>
+                    Your Creations
+                </h2>
+                <button onclick="window.location.href='../create_new_ai_character_form/code.html'"
+                    class="text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1.5 rounded-full transition-colors shadow-lg shadow-indigo-500/20 flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">add</span> New
+                </button>
+            </div>
+
+            <div id="loading-state" class="flex flex-col items-center justify-center py-12 text-slate-500">
+                <span class="material-symbols-outlined text-4xl animate-spin mb-2 text-indigo-500/50">sync</span>
+                <p>Loading your profile...</p>
+            </div>
+
+            <div id="empty-state"
+                class="hidden flex-col items-center justify-center py-12 text-slate-500 bg-card-dark rounded-2xl border border-white/5 border-dashed">
+                <span class="material-symbols-outlined text-5xl mb-3 text-slate-600">smart_toy</span>
+                <p class="text-center font-medium max-w-[200px]">You haven't forged any AI characters yet.</p>
+                <button onclick="window.location.href='../create_new_ai_character_form/code.html'"
+                    class="mt-4 px-4 py-2 bg-white/5 hover:bg-white/10 text-white text-sm font-semibold rounded-full border border-white/10 transition-colors">
+                    Create One
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3" id="my-character-grid">
+                <!-- Dynamic user characters will be loaded here -->
+            </div>
+        </section>
+        <div class="h-10"></div>
+    </main>
+
+    <script>
+        const API_BASE_URL = "http://127.0.0.1:8000";
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const token = localStorage.getItem("access_token");
+            if (!token) {
+                // If not authenticated, kick to login.
+                window.location.href = "../persona_engine_authentication/code.html";
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/user/characters`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json(); // { username: "", characters: [] }
+
+                    // Render Profile
+                    document.getElementById("loading-state").classList.add("hidden");
+                    document.getElementById("username-display").innerText = data.username;
+                    document.getElementById("avatar-initial").innerText = data.username.charAt(0).toUpperCase();
+                    document.getElementById("char-count").innerText = data.characters.length;
+
+                    if (data.characters.length === 0) {
+                        document.getElementById("empty-state").classList.remove("hidden");
+                        document.getElementById("empty-state").classList.add("flex");
+                    } else {
+                        renderMyCharacters(data.characters);
+                    }
+                } else {
+                    console.error("Failed to fetch profile");
+                    alert("Session expired or error loading profile.");
+                    logout();
+                }
+            } catch (e) {
+                console.error("Error fetching user info:", e);
+                document.getElementById("loading-state").innerHTML = "<p class='text-red-400'>Network Error Loading Profile.</p>";
+            }
+        });
+
+        function renderMyCharacters(characters) {
+            const grid = document.getElementById('my-character-grid');
+            grid.innerHTML = "";
+
+            characters.forEach(char => {
+                const charId = char.id;
+                const name = char.name;
+                const role = char.prompt_data?.CHAR_ROLE || "Assistant";
+                const imgUrl = `https://picsum.photos/seed/${charId}/300/400`;
+
+                const cardHTML = `
+                <div class="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg group cursor-pointer neon-border bg-card-dark" onclick="window.location.href='../active_ai_chat_interface/code.html?char_id=${charId}'">
+                    <img alt="${name}" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src="${imgUrl}"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-3 z-10">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h3 class="text-sm font-bold text-white mb-0.5 drop-shadow-md truncate max-w-[120px]">${name}</h3>
+                                <p class="text-[10px] text-slate-300 line-clamp-1">${role}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+                grid.innerHTML += cardHTML;
+            });
+        }
+
+        function logout() {
+            localStorage.removeItem("access_token");
+            localStorage.removeItem("X-Guest-ID");
+            window.location.href = "../persona_engine_authentication/code.html";
+        }
+    </script>
+</body>
+
+</html>

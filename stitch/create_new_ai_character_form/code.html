@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mythos AI Forge</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8b5cf6",
+                        "primary-dark": "#7c3aed",
+                        "background-dark": "#09090b",
+                        "background-card": "#18181b",
+                        "border-dark": "#27272a",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-dark font-display text-slate-200 antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+    <div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto shadow-2xl bg-background-dark">
+        <header
+            class="sticky top-0 z-50 flex items-center justify-between p-4 pb-3 bg-background-dark/95 backdrop-blur-md border-b border-border-dark">
+            <button aria-label="Go back"
+                class="text-slate-200 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-white/5 transition-colors">
+                <span class="material-symbols-outlined text-[24px]">arrow_back</span>
+            </button>
+            <h2 class="text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Mythos AI
+                Forge</h2>
+        </header>
+        <main class="flex-1 overflow-y-auto px-4 pb-32 pt-4 space-y-8">
+            <section class="flex flex-col items-center pt-2">
+                <div class="relative group cursor-pointer">
+                    <div
+                        class="size-28 rounded-full bg-background-card flex items-center justify-center border border-dashed border-slate-600 overflow-hidden group-hover:border-primary transition-all duration-300">
+                        <span
+                            class="material-symbols-outlined text-slate-500 text-[36px] group-hover:text-primary transition-colors">add_photo_alternate</span>
+                        <img alt=""
+                            class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-40 transition-opacity"
+                            data-alt="Abstract neon digital avatar placeholder"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOeHkQtc5Vpe2ZCnGT9TQW27cCWHZSDyv20ta_HgKPUSbA6229RrfAs3TGsOTMvEikORCKrVeAMPzT5VuHjheK6W2g7Y-24SbPVIOwwx57QgbQbsYs4pTkAzqbUh1zeG3LGrx_SAxii6vvaniaMo57yeWwiImETY1G5DJLlJObCKareQ8clmjpocYj2lWDwtFrMegrh88olmZlqwEZB76baTqL5sdiyDbxj_0POyqv7P3tn3czQ6g5bwPy-DyqsFkavNCnz862CTmA" />
+                    </div>
+                    <div
+                        class="absolute bottom-0 right-0 bg-primary text-white p-2 rounded-full shadow-lg border-2 border-background-dark hover:bg-primary-dark transition-colors">
+                        <span class="material-symbols-outlined text-[16px]">edit</span>
+                    </div>
+                </div>
+                <p class="mt-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Tap to upload avatar</p>
+            </section>
+            <section>
+                <div class="flex items-center gap-2 mb-4 px-1">
+                    <span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+                    <h3 class="text-white text-lg font-bold leading-tight tracking-tight">Identity</h3>
+                </div>
+                <div class="glass-panel p-5 rounded-xl space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Character
+                            Name</label>
+                        <input
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 h-12 px-4 text-sm transition-all shadow-inner"
+                            placeholder="e.g. Cyberpunk Hacker" type="text" />
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Role /
+                                Archetype</label>
+                            <input
+                                class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 h-12 px-4 text-sm transition-all shadow-inner"
+                                placeholder="e.g. Netrunner" type="text" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Age</label>
+                            <input
+                                class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 h-12 px-4 text-sm transition-all shadow-inner"
+                                placeholder="e.g. 24" type="number" />
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Appearance</label>
+                        <textarea
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 min-h-[80px] p-4 text-sm resize-none transition-all shadow-inner"
+                            placeholder="Describe physical features, clothing, accessories..."></textarea>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="flex items-center gap-2 mb-4 px-1">
+                    <span class="material-symbols-outlined text-primary text-[20px]">psychology</span>
+                    <h3 class="text-white text-lg font-bold leading-tight tracking-tight">Personality &amp; Lore</h3>
+                </div>
+                <div class="glass-panel p-5 rounded-xl space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Core
+                            Personality</label>
+                        <input
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 h-12 px-4 text-sm transition-all shadow-inner"
+                            placeholder="e.g. Charming, cynical, intelligent" type="text" />
+                    </div>
+                    <div class="space-y-2">
+                        <label
+                            class="text-slate-400 text-xs font-semibold uppercase tracking-wider flex justify-between">Backstory</label>
+                        <textarea
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 min-h-[120px] p-4 text-sm resize-none transition-all shadow-inner"
+                            placeholder="Describe their past, motivations, and key life events..."></textarea>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Primary
+                            Goal</label>
+                        <textarea
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 min-h-[80px] p-4 text-sm resize-none transition-all shadow-inner"
+                            placeholder="What does this character want to achieve?"></textarea>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="flex items-center gap-2 mb-4 px-1">
+                    <span class="material-symbols-outlined text-primary text-[20px]">record_voice_over</span>
+                    <h3 class="text-white text-lg font-bold leading-tight tracking-tight">Communication</h3>
+                </div>
+                <div class="glass-panel p-5 rounded-xl space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Speaking
+                            Style</label>
+                        <div class="relative">
+                            <select
+                                class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4 text-sm appearance-none transition-all cursor-pointer shadow-inner">
+                                <option>Casual &amp; Slang-heavy</option>
+                                <option>Formal &amp; Academic</option>
+                                <option>Poetic &amp; Mysterious</option>
+                                <option>Robotic &amp; Logical</option>
+                                <option>Aggressive &amp; Direct</option>
+                            </select>
+                            <span
+                                class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none text-sm">expand_more</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Quirks &amp;
+                            Catchphrases</label>
+                        <input
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 h-12 px-4 text-sm transition-all shadow-inner"
+                            placeholder="e.g. Uses tech jargon, stutters when nervous" type="text" />
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Tone of
+                            Voice</label>
+                        <input
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 h-12 px-4 text-sm transition-all shadow-inner"
+                            placeholder="e.g. Whispery, booming, sarcastic" type="text" />
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="flex items-center gap-2 mb-4 px-1">
+                    <span class="material-symbols-outlined text-primary text-[20px]">explore</span>
+                    <h3 class="text-white text-lg font-bold leading-tight tracking-tight">Context</h3>
+                </div>
+                <div class="glass-panel p-5 rounded-xl space-y-5">
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Current
+                            Setting</label>
+                        <textarea
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 min-h-[100px] p-4 text-sm resize-none transition-all shadow-inner"
+                            placeholder="Where is the conversation taking place? (e.g. A neon-lit bar in Neo-Tokyo)"></textarea>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-slate-400 text-xs font-semibold uppercase tracking-wider">User
+                            Relationship</label>
+                        <textarea
+                            class="w-full rounded-lg text-white border-border-dark bg-background-dark/50 focus:border-primary focus:ring-1 focus:ring-primary placeholder:text-slate-600 min-h-[100px] p-4 text-sm resize-none transition-all shadow-inner"
+                            placeholder="How does the character know the user? (e.g. Strangers, old friends, rivals)"></textarea>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div
+            class="fixed bottom-0 w-full max-w-md bg-background-dark/95 backdrop-blur-xl border-t border-border-dark p-4 z-50">
+            <button
+                class="w-full h-14 bg-gradient-to-r from-primary to-primary-dark hover:from-primary/90 hover:to-primary-dark/90 text-white font-bold text-lg rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-all transform active:scale-[0.98] ring-1 ring-white/10">
+                <span class="material-symbols-outlined">auto_awesome</span>
+                Create Character
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = "http://127.0.0.1:8000";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const token = localStorage.getItem("access_token");
+            if (!token) {
+                alert("You must be logged in to create a character.");
+                window.location.href = "../persona_engine_authentication/code.html";
+                return;
+            }
+
+            const backBtn = document.querySelector('[aria-label="Go back"]');
+            if (backBtn) {
+                backBtn.addEventListener('click', () => {
+                    window.location.href = "../character_discovery_dashboard/code.html";
+                });
+            }
+
+            const createBtn = document.querySelector('.bg-gradient-to-r');
+            if (createBtn) {
+                createBtn.addEventListener('click', async () => {
+                    const textInputs = document.querySelectorAll('input[type="text"]');
+                    const numberInputs = document.querySelectorAll('input[type="number"]');
+                    const textareas = document.querySelectorAll('textarea');
+                    const select = document.querySelector('select');
+
+                    const name = textInputs[0].value.trim();
+                    if (!name) {
+                        alert("Character Name is required.");
+                        return;
+                    }
+
+                    const char_id = name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+
+                    const prompt_data = {
+                        CHAR_NAME: name,
+                        CHAR_ROLE: textInputs[1].value || "",
+                        CHAR_AGE: numberInputs[0].value || "",
+                        CHAR_APPEARANCE: textareas[0].value || "",
+                        CHAR_PERSONALITY: textInputs[2].value || "",
+                        CHAR_BACKSTORY: textareas[1].value || "",
+                        CHAR_GOAL: textareas[2].value || "",
+                        SPEAKING_STYLE: select.value || "",
+                        CHAR_QUIRKS: textInputs[3].value || "",
+                        CHAR_TONE: textInputs[4].value || "",
+                        CURRENT_SETTING: textareas[3].value || "",
+                        USER_RELATIONSHIP: textareas[4].value || ""
+                    };
+
+                    const payload = {
+                        char_id: char_id,
+                        name: name,
+                        prompt_data: prompt_data
+                    };
+
+                    createBtn.innerHTML = `<span>Saving...</span>`;
+
+                    try {
+                        const response = await fetch(`${API_BASE_URL}/create-character`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": `Bearer ${token}`
+                            },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.ok) {
+                            alert("Character created successfully!");
+                            window.location.href = "../character_discovery_dashboard/code.html";
+                        } else {
+                            const err = await response.json();
+                            alert(err.detail || "Failed to create character");
+                            createBtn.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span> Create Character`;
+                        }
+                    } catch (error) {
+                        console.error("Create Character Error:", error);
+                        alert("An error occurred. Please try again.");
+                        createBtn.innerHTML = `<span class="material-symbols-outlined">auto_awesome</span> Create Character`;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

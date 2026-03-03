@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mythos AI Chat Interface</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "mythos-purple": "#8b5cf6",
+                        "mythos-glow": "#a855f7",
+                        "obsidian": "#050505",
+                        "obsidian-light": "#0a0a0c",
+                        "surface-dark": "#121214",
+                        "surface-translucent": "rgba(30, 30, 35, 0.6)",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'neon': '0 0 15px rgba(168, 85, 247, 0.3), 0 0 5px rgba(139, 92, 246, 0.2)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2d2a42;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <style>
+        body {
+            height: 100dvh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-obsidian text-slate-100 font-display h-screen overflow-hidden flex flex-col md:flex-row">
+    <aside class="hidden md:flex flex-col w-80 h-full border-r border-white/5 bg-obsidian-light">
+        <div class="p-6">
+            <h1
+                class="text-xl font-bold tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-400">
+                Mythos AI</h1>
+        </div>
+        <nav class="flex-1 overflow-y-auto px-4 gap-2 flex flex-col">
+            <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 px-2">Recent Chats</div>
+            <button
+                class="flex items-center gap-3 p-3 rounded-xl bg-surface-dark border border-white/5 text-purple-400 w-full text-left transition-colors">
+                <span class="material-symbols-outlined text-xl">chat_bubble</span>
+                <div class="flex-1 truncate font-medium">Nexus - Guide</div>
+            </button>
+            <button
+                class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-slate-400 w-full text-left transition-colors">
+                <span class="material-symbols-outlined text-xl">sports_esports</span>
+                <div class="flex-1 truncate">Cyber-Ninja RPG</div>
+            </button>
+            <button
+                class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-slate-400 w-full text-left transition-colors">
+                <span class="material-symbols-outlined text-xl">favorite</span>
+                <div class="flex-1 truncate">Therapy Bot</div>
+            </button>
+        </nav>
+        <div class="p-4 mt-auto border-t border-white/5">
+            <button
+                class="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 hover:text-red-500 text-slate-500 w-full text-left transition-colors">
+                <span class="material-symbols-outlined text-xl">arrow_back</span>
+                <span class="font-medium">Back to Dashboard</span>
+            </button>
+        </div>
+    </aside>
+    <main class="flex-1 flex flex-col h-full relative bg-obsidian">
+        <header
+            class="flex items-center justify-between px-4 py-3 md:px-6 md:py-4 border-b border-white/5 bg-obsidian/80 backdrop-blur-xl z-10 sticky top-0">
+            <div class="flex items-center gap-3">
+                <button class="md:hidden p-2 -ml-2 rounded-full hover:bg-white/10 text-slate-400">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="relative">
+                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-cover bg-center ring-2 ring-purple-500/30"
+                        data-alt="Futuristic cyborg avatar portrait"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCGOL9nse9Vvn4OoCwfrogemSnyCE1MRowvcnvE_zXmjtD2r9Qor__G_SYEfAGSqLM0W9vEx4mn1ZcvFEdFdaHpbvcA3gNIj7O_L9x5UX3uHMm6NYt0yENMpc5IPTLVWbllddpz247GCD1W__8CVk3hSro1of3yBgYhM7Kdwd_n7qPDFxd-krUu5dpG0LaWvWjB_fiL_wL-q48NesOuTeey2TKuiSqODaQHMSYFGf1iN4CF3WyVVRrx_V21HLHeJqeD-x7Isb-cekFk')">
+                    </div>
+                    <div
+                        class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-obsidian shadow-[0_0_8px_rgba(34,197,94,0.6)]">
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <h2 class="text-base md:text-lg font-bold text-white leading-tight flex items-center gap-2">
+                        Nexus
+                        <span
+                            class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 border border-purple-500/20 text-purple-300 uppercase tracking-wide">Guide</span>
+                    </h2>
+                    <p class="text-xs text-slate-400 font-medium">Active now • Cybernetic Guide</p>
+                </div>
+            </div>
+            <button class="p-2 rounded-full hover:bg-white/10 text-slate-400 transition-colors">
+                <span class="material-symbols-outlined">settings</span>
+            </button>
+        </header>
+        <div class="flex-1 overflow-y-auto p-4 md:p-6 space-y-6 scroll-smooth" id="chat-container">
+        </div>
+        </div>
+        <!-- Dynamic messages will be appended here -->
+        </div>
+        </div>
+        <div class="p-4 bg-obsidian border-t border-white/5 w-full z-20 shrink-0 mt-auto">
+            <div class="absolute -top-10 left-0 right-0 flex justify-center px-4 pointer-events-none">
+                <div
+                    class="bg-black/40 backdrop-blur-md border border-amber-500/10 text-amber-500/90 px-4 py-1.5 rounded-full text-[11px] font-semibold flex items-center gap-2 shadow-lg tracking-wide">
+                    <span class="material-symbols-outlined text-sm">warning</span>
+                    Guest Mode: Chat history will not be saved.
+                </div>
+            </div>
+            <form class="relative flex items-end gap-2 max-w-5xl mx-auto" onsubmit="event.preventDefault();">
+                <button
+                    class="p-3 text-slate-500 hover:text-purple-400 transition-colors rounded-full hover:bg-white/5 hidden sm:flex shrink-0"
+                    type="button">
+                    <span class="material-symbols-outlined">add_circle</span>
+                </button>
+                <div
+                    class="relative flex-1 bg-surface-dark rounded-3xl border border-white/10 focus-within:border-purple-500/50 focus-within:ring-1 focus-within:ring-purple-500/20 transition-all shadow-lg shadow-black/50">
+                    <textarea
+                        class="w-full bg-transparent border-none text-slate-200 placeholder-slate-500 focus:ring-0 resize-none py-3.5 px-5 max-h-32 mb-1"
+                        placeholder="Type a message to..." rows="1"
+                        style="min-height: 48px; box-shadow: none;"></textarea>
+                    <button
+                        class="absolute right-2 bottom-1.5 p-2 bg-purple-600 hover:bg-purple-500 text-white rounded-full transition-colors shadow-lg shadow-purple-600/30 flex items-center justify-center shrink-0"
+                        type="submit">
+                        <span class="material-symbols-outlined text-[20px]">send</span>
+                    </button>
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <p class="text-[10px] text-slate-600 font-medium tracking-wide">Mythos AI can make mistakes. Consider
+                    checking important information.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const API_BASE_URL = "http://127.0.0.1:8000";
+        let currentThreadId = "";
+        let charId = "nexus";
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            charId = urlParams.get('char_id') || 'nexus';
+
+            // Update header character name
+            const headerName = document.querySelector('h2');
+            if (headerName) {
+                headerName.innerHTML = `${charId} <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 border border-purple-500/20 text-purple-300 uppercase tracking-wide">AI</span>`;
+            }
+
+            const token = localStorage.getItem("access_token");
+            const guestId = localStorage.getItem("X-Guest-ID");
+
+            // thread management
+            const threadKey = `thread_id_${charId}`;
+            currentThreadId = localStorage.getItem(threadKey);
+            if (!currentThreadId) {
+                currentThreadId = "thread_" + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem(threadKey, currentThreadId);
+            }
+
+            // clear initial chat dummy messages
+            const chatContainer = document.getElementById('chat-container');
+            chatContainer.innerHTML = '<div class="h-28"></div>';
+
+            // fetch history
+            const headers = {};
+            if (token) headers["Authorization"] = `Bearer ${token}`;
+            if (guestId) headers["X-Guest-ID"] = guestId;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/chat/${charId}/${currentThreadId}`, {
+                    method: "GET",
+                    headers: headers
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data !== "No history found for this character/thread pair.") {
+                        if (Array.isArray(data)) {
+                            // Backend returns list of message dicts: [{'type': 'human', 'content': '...'}, ...]
+                            data.forEach(msg => {
+                                let sender = "user";
+                                if (msg.type === "ai" || msg.id?.includes("AIMessage") || msg.__type === "AIMessageChunk") sender = "ai";
+                                appendMessage(msg.content, sender);
+                            });
+                        } else if (data.messages && Array.isArray(data.messages)) {
+                            data.messages.forEach(msg => {
+                                let sender = "user";
+                                if (msg.type === "ai" || msg.id?.includes("AIMessage") || msg.__type === "AIMessageChunk") sender = "ai";
+                                appendMessage(msg.content, sender);
+                            });
+                        }
+                    } else {
+                        // Empty chat
+                        appendMessage("Hello! I am " + charId + ". How can I help you?", "ai");
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to load history", e);
+            }
+
+            // Handle send
+            const form = document.querySelector('form');
+            const textarea = document.querySelector('textarea');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const text = textarea.value.trim();
+                if (!text) return;
+
+                appendMessage(text, "user");
+                textarea.value = "";
+
+                showTypingIndicator();
+
+                try {
+                    const response = await fetch(`${API_BASE_URL}/chat/${charId}/${currentThreadId}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            ...headers
+                        },
+                        body: JSON.stringify({ messages: text })
+                    });
+
+                    removeTypingIndicator();
+
+                    if (response.ok) {
+                        const ai_text = await response.text();
+                        let cleanText = ai_text;
+                        try { cleanText = JSON.parse(ai_text); } catch (err) { }
+                        appendMessage(cleanText, "ai");
+                    } else {
+                        appendMessage("Sorry, I encountered an error.", "ai");
+                    }
+                } catch (e) {
+                    removeTypingIndicator();
+                    appendMessage("Sorry, network error.", "ai");
+                }
+            });
+
+            // Add Enter to submit
+            textarea.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    form.dispatchEvent(new Event('submit'));
+                }
+            });
+
+            // Back Button
+            const sidebarBackBtn = document.querySelector('aside button.text-slate-500');
+            if (sidebarBackBtn) {
+                sidebarBackBtn.addEventListener('click', () => {
+                    window.location.href = "../character_discovery_dashboard/code.html";
+                });
+            }
+        });
+
+        function appendMessage(text, sender) {
+            const chatContainer = document.getElementById('chat-container');
+            const spacer = chatContainer.querySelector('.h-28');
+            if (spacer) chatContainer.removeChild(spacer);
+
+            const div = document.createElement('div');
+            if (sender === 'user') {
+                div.className = "flex items-end gap-3 justify-end max-w-3xl ml-auto message-block mt-4";
+                div.innerHTML = `
+            <div class="flex flex-col gap-1 items-end">
+            <span class="text-xs text-slate-500 mr-1">You</span>
+            <div class="px-5 py-3.5 bg-[#4c1d95] text-white rounded-2xl rounded-br-none shadow-neon text-sm md:text-base leading-relaxed border border-purple-500/30">
+            <p>${text.replace(/\\n/g, '<br/>')}</p>
+            </div>
+            </div>
+            `;
+            } else {
+                div.className = "flex items-end gap-3 max-w-3xl message-block mt-4";
+                div.innerHTML = `
+            <div class="flex flex-col gap-1">
+            <span class="text-xs text-slate-500 ml-1">${charId}</span>
+            <div class="px-5 py-3.5 bg-surface-translucent backdrop-blur-sm rounded-2xl rounded-bl-none text-slate-200 text-sm md:text-base leading-relaxed border border-white/10">
+            <p>${text.replace(/\\n/g, '<br/>')}</p>
+            </div>
+            </div>
+            `;
+            }
+
+            chatContainer.appendChild(div);
+
+            const newSpacer = document.createElement('div');
+            newSpacer.className = "h-28 mt-4";
+            chatContainer.appendChild(newSpacer);
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const chatContainer = document.getElementById('chat-container');
+            const spacer = chatContainer.querySelector('.h-28');
+            if (spacer) chatContainer.removeChild(spacer);
+
+            const div = document.createElement('div');
+            div.id = "typing-indicator";
+            div.className = "flex items-end gap-3 max-w-3xl message-block mt-4";
+            div.innerHTML = `
+        <div class="flex flex-col gap-1">
+        <span class="text-xs text-slate-500 ml-1">${charId}</span>
+        <div class="px-4 py-3 bg-surface-translucent backdrop-blur-sm rounded-2xl rounded-bl-none border border-white/10 flex gap-1.5 items-center h-[46px]">
+        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></span>
+        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-100"></span>
+        <span class="w-2 h-2 bg-slate-400 rounded-full animate-bounce delay-200"></span>
+        </div>
+        </div>
+        `;
+            chatContainer.appendChild(div);
+
+            const newSpacer = document.createElement('div');
+            newSpacer.className = "h-28 mt-4";
+            chatContainer.appendChild(newSpacer);
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+    </script>
+</body>
+
+</html>

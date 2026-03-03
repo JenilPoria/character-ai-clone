@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mythos AI Authentication</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#8b5cf6", "primary-hover": "#7c3aed",
+                        "background-dark": "#000000", "surface-dark": "#121212", "surface-border": "#27272a", "text-secondary": "#a1a1aa",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'neon': '0 0 20px -5px rgba(139, 92, 246, 0.5)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Spline Sans', sans-serif;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-dark min-h-screen flex flex-col items-center justify-center font-display antialiased selection:bg-primary/30 selection:text-primary text-slate-100 p-4">
+    <div class="w-full max-w-[420px] flex flex-col relative z-10">
+        <div class="flex flex-col items-center justify-center mb-8 pt-6">
+            <div
+                class="w-16 h-16 rounded-2xl bg-surface-dark border border-surface-border flex items-center justify-center mb-6 shadow-neon relative overflow-hidden group">
+                <div class="absolute inset-0 bg-primary/20 blur-xl"></div>
+                <span class="material-symbols-outlined text-primary text-[32px] relative z-10">smart_toy</span>
+            </div>
+            <h1 class="text-white tracking-tight text-[32px] font-bold leading-tight text-center">Mythos AI</h1>
+            <p class="text-text-secondary text-base font-normal mt-2 text-center max-w-[280px]">
+                Enter the realm of advanced digital consciousness.
+            </p>
+        </div>
+        <div class="flex flex-col gap-5 w-full">
+            <div class="flex flex-col w-full">
+                <label class="sr-only">Email</label>
+                <div class="relative flex w-full items-center">
+                    <input
+                        class="form-input flex w-full rounded-xl border border-surface-border bg-surface-dark text-white focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-zinc-600 pl-4 pr-12 text-base transition-colors duration-200"
+                        placeholder="Email address" type="email" value="" />
+                    <div
+                        class="absolute right-0 flex items-center justify-center pr-4 pointer-events-none text-zinc-500">
+                        <span class="material-symbols-outlined text-[20px]">mail</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col w-full">
+                <label class="sr-only">Password</label>
+                <div class="relative flex w-full items-center">
+                    <input
+                        class="form-input flex w-full rounded-xl border border-surface-border bg-surface-dark text-white focus:border-primary focus:ring-1 focus:ring-primary h-14 placeholder:text-zinc-600 pl-4 pr-12 text-base transition-colors duration-200"
+                        placeholder="Password" type="password" value="" />
+                    <div
+                        class="absolute right-0 flex items-center justify-center pr-4 cursor-pointer text-zinc-500 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-2">
+                    <a class="text-sm font-medium text-text-secondary hover:text-primary transition-colors"
+                        href="#">Forgot Password?</a>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 mt-2">
+                <button
+                    class="flex w-full cursor-pointer items-center justify-center rounded-xl h-14 px-6 bg-primary hover:bg-primary-hover active:scale-[0.98] transition-all text-white text-base font-bold tracking-wide shadow-neon border border-primary/50">
+                    <span>Login</span>
+                </button>
+                <div class="relative flex items-center justify-center w-full my-2">
+                    <div class="absolute h-[1px] w-full bg-surface-border"></div>
+                    <span
+                        class="relative bg-background-dark px-3 text-xs uppercase tracking-wider font-medium text-zinc-600">or</span>
+                </div>
+                <button
+                    class="flex w-full cursor-pointer items-center justify-center rounded-xl h-14 px-6 bg-transparent border border-surface-border hover:bg-surface-border/50 active:scale-[0.98] transition-all text-white text-base font-medium group">
+                    <span class="mr-2 group-hover:text-primary-hover transition-colors">Continue as Guest</span>
+                    <span class="text-xs font-normal text-zinc-500">(No History Saved)</span>
+                </button>
+            </div>
+        </div>
+        <div class="mt-8 text-center">
+            <p class="text-text-secondary text-sm font-normal">
+                Don't have an account?
+                <a class="text-primary font-semibold hover:text-primary-hover hover:underline decoration-2 underline-offset-4 ml-1 transition-colors"
+                    href="signup.html">Sign Up</a>
+            </p>
+        </div>
+    </div>
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-primary/5 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-900/10 rounded-full blur-[100px]">
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = "http://127.0.0.1:8000";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const emailInput = document.querySelector('input[type="email"]');
+            const passwordInput = document.querySelector('input[type="password"]');
+
+            // Login Button
+            const loginBtn = document.querySelector('button.bg-primary');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    const username = emailInput.value;
+                    const password = passwordInput.value;
+
+                    if (!username || !password) {
+                        alert("Please enter both email and password.");
+                        return;
+                    }
+
+                    loginBtn.innerHTML = `<span>Loading...</span>`;
+
+                    try {
+                        const formData = new URLSearchParams();
+                        formData.append("username", username);
+                        formData.append("password", password);
+
+                        const response = await fetch(`${API_BASE_URL}/token`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            },
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            localStorage.setItem("access_token", data.access_token);
+                            localStorage.removeItem("X-Guest-ID");
+                            window.location.href = "../character_discovery_dashboard/code.html";
+                        } else {
+                            const err = await response.json();
+                            alert(err.detail || "Login failed");
+                            loginBtn.innerHTML = `<span>Login</span>`;
+                        }
+                    } catch (error) {
+                        console.error("Login Error:", error);
+                        alert("An error occurred during login.");
+                        loginBtn.innerHTML = `<span>Login</span>`;
+                    }
+                });
+            }
+
+            // Guest Button
+            const guestBtn = document.querySelector('button.bg-transparent');
+            if (guestBtn) {
+                guestBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const guestId = "guest_" + Math.random().toString(36).substr(2, 9);
+                    localStorage.setItem("X-Guest-ID", guestId);
+                    localStorage.removeItem("access_token");
+                    window.location.href = "../character_discovery_dashboard/code.html";
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
